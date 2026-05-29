@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        NeuroHub | Профиль
+    </title>
+
+    <meta
+    name="description"
+    content="Личный кабинет пользователя NeuroHub">
+
+    <link
+    rel="stylesheet"
+    href="style.css">
+
+</head>
+<body>
+
+<header>
+
+    <div class="logo">
+
+        <img
+        src="logo.svg"
+        alt="NeuroHub"
+        height="40">
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">
+            Главная
+        </a>
+
+        <a href="catalog.html">
+            Каталог
+        </a>
+
+        <a href="favorites.html">
+            Избранное
+        </a>
+
+        <a href="profile.html">
+            Профиль
+        </a>
+
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <h1>
+
+        Личный кабинет
+
+    </h1>
+
+    <p>
+
+        Управляйте своим аккаунтом NeuroHub
+
+    </p>
+
+</section>
+
+<section>
+
+    <div
+    class="tool-card"
+    style="
+    max-width:900px;
+    margin:auto;">
+
+        <h2>
+
+            👤 Информация
+
+        </h2>
+
+        <br>
+
+        <p>
+
+            Имя:
+            <span id="profileUsername">
+
+                Гость
+
+            </span>
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Избранных ИИ:
+            <span id="favoriteCount">
+
+                0
+
+            </span>
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Отзывов:
+            <span id="reviewCount">
+
+                0
+
+            </span>
+
+        </p>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2>
+
+        Быстрые действия
+
+    </h2>
+
+    <div class="tools-grid">
+
+        <div class="tool-card">
+
+            <h3>
+
+                ⭐ Избранное
+
+            </h3>
+
+            <p>
+
+                Посмотреть сохранённые инструменты
+
+            </p>
+
+            <br>
+
+            <a
+            href="favorites.html"
+            class="btn">
+
+                Открыть
+
+            </a>
+
+        </div>
+
+        <div class="tool-card">
+
+            <h3>
+
+                🤖 Каталог
+
+            </h3>
+
+            <p>
+
+                Найти новые ИИ
+
+            </p>
+
+            <br>
+
+            <a
+            href="catalog.html"
+            class="btn">
+
+                Перейти
+
+            </a>
+
+        </div>
+
+        <div class="tool-card">
+
+            <h3>
+
+                💬 Отзывы
+
+            </h3>
+
+            <p>
+
+                Оставить предложение
+
+            </p>
+
+            <br>
+
+            <a
+            href="tool.html"
+            class="btn">
+
+                Открыть
+
+            </a>
+
+        </div>
+
+        <div class="tool-card">
+
+            <h3>
+
+                🚪 Выход
+
+            </h3>
+
+            <p>
+
+                Завершить сеанс
+
+            </p>
+
+            <br>
+
+            <button
+            class="btn"
+            onclick="logout()">
+
+                Выйти
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2>
+
+        Ваша статистика
+
+    </h2>
+
+    <div class="tools-grid">
+
+        <div class="tool-card">
+
+            <h3>
+
+                📚 Просмотрено
+
+            </h3>
+
+            <p id="viewedCount">
+
+                0 инструментов
+
+            </p>
+
+        </div>
+
+        <div class="tool-card">
+
+            <h3>
+
+                ⭐ Избранное
+
+            </h3>
+
+            <p id="favoriteCount2">
+
+                0 инструментов
+
+            </p>
+
+        </div>
+
+        <div class="tool-card">
+
+            <h3>
+
+                📝 Отзывы
+
+            </h3>
+
+            <p id="reviewCount2">
+
+                0 отзывов
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div class="ad-box">
+
+        Реклама
+
+    </div>
+
+</section>
+
+<footer>
+
+    <p>
+
+        © 2026 NeuroHub
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+<script>
+
+document.addEventListener(
+"DOMContentLoaded",
+() => {
+
+    const user =
+    JSON.parse(
+    localStorage.getItem("user")
+    );
+
+    if(user){
+
+        document.getElementById(
+        "profileUsername"
+        ).textContent =
+        user.username;
+
+    }
+
+    const favorites =
+    JSON.parse(
+    localStorage.getItem(
+    "favorites"
+    )
+    ) || [];
+
+    document.getElementById(
+    "favoriteCount"
+    ).textContent =
+    favorites.length;
+
+    document.getElementById(
+    "favoriteCount2"
+    ).textContent =
+    favorites.length +
+    " инструментов";
+
+    const reviews =
+    JSON.parse(
+    localStorage.getItem(
+    "reviews"
+    )
+    ) || [];
+
+    document.getElementById(
+    "reviewCount"
+    ).textContent =
+    reviews.length;
+
+    document.getElementById(
+    "reviewCount2"
+    ).textContent =
+    reviews.length +
+    " отзывов";
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroHub | Каталог ИИ</title>
+    <meta name="description" content="Каталог лучших ИИ инструментов NeuroHub.">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .catalog-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 24px;
+            align-items: start;
+            padding: 32px 8%;
+            min-height: calc(100vh - 120px);
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 96px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 18px;
+            padding: 20px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+        }
+
+        .sidebar h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .sidebar .side-section {
+            margin-bottom: 22px;
+        }
+
+        .sidebar .side-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #94a3b8;
+            margin-bottom: 10px;
+        }
+
+        .side-btn {
+            width: 100%;
+            padding: 12px 14px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.04);
+            color: #fff;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .side-btn:hover,
+        .side-btn.active {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateX(2px);
+        }
+
+        .content-area {
+            min-width: 0;
+        }
+
+        .catalog-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+
+        .catalog-title {
+            font-size: 52px;
+            line-height: 1.05;
+            margin-bottom: 10px;
+        }
+
+        .catalog-subtitle {
+            color: #94a3b8;
+            font-size: 18px;
+        }
+
+        .search-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 12px;
+            margin: 22px 0 26px;
+        }
+
+        .search-row input {
+            width: 100%;
+            padding: 16px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            color: white;
+            outline: none;
+        }
+
+        .search-row input::placeholder {
+            color: #94a3b8;
+        }
+
+        .stats-line {
+            color: #94a3b8;
+            margin-bottom: 18px;
+            font-size: 15px;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 18px;
+        }
+
+        .tool-card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            height: 100%;
+        }
+
+        .tool-actions {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .tool-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(59,130,246,0.12);
+            border: 1px solid rgba(59,130,246,0.22);
+            color: #bfdbfe;
+            font-size: 13px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 8%;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            background: rgba(11,17,32,0.92);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .topbar nav {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .topbar nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .topbar nav a:hover {
+            color: #60a5fa;
+        }
+
+        #userArea .btn {
+            white-space: nowrap;
+        }
+
+        .mobile-category-title {
+            display: none;
+        }
+
+        @media (max-width: 980px) {
+            .catalog-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                top: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .topbar {
+                padding: 16px 5%;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .catalog-layout {
+                padding: 24px 5%;
+            }
+
+            .catalog-title {
+                font-size: 36px;
+            }
+
+            .search-row {
+                grid-template-columns: 1fr;
+            }
+
+            .mobile-category-title {
+                display: block;
+                margin: 18px 0 12px;
+                color: #94a3b8;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="topbar">
+    <div class="logo">
+        <img src="logo.svg" alt="NeuroHub" height="42">
+    </div>
+
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="favorites.html">Избранное</a>
+    </nav>
+
+    <div id="userArea"></div>
+</header>
+
+<main class="catalog-layout">
+    <aside class="sidebar">
+        <h2>Категории</h2>
+
+        <div class="side-section">
+            <div class="side-label">Быстрый выбор</div>
+            <button class="side-btn active" data-category="all" onclick="setCategory('all', this)">Все инструменты</button>
+            <button class="side-btn" data-category="Чат-боты" onclick="setCategory('Чат-боты', this)">Чат-боты</button>
+            <button class="side-btn" data-category="Изображения" onclick="setCategory('Изображения', this)">Изображения</button>
+            <button class="side-btn" data-category="Видео" onclick="setCategory('Видео', this)">Видео</button>
+            <button class="side-btn" data-category="Программирование" onclick="setCategory('Программирование', this)">Программирование</button>
+            <button class="side-btn" data-category="Музыка" onclick="setCategory('Музыка', this)">Музыка</button>
+            <button class="side-btn" data-category="Автоматизация" onclick="setCategory('Автоматизация', this)">Автоматизация</button>
+            <button class="side-btn" data-category="Продуктивность" onclick="setCategory('Продуктивность', this)">Продуктивность</button>
+            <button class="side-btn" data-category="Образование" onclick="setCategory('Образование', this)">Образование</button>
+            <button class="side-btn" data-category="Дизайн" onclick="setCategory('Дизайн', this)">Дизайн</button>
+        </div>
+
+        <div class="side-section">
+            <div class="side-label">Подборки</div>
+            <button class="side-btn" data-category="Маркетинг" onclick="setCategory('Маркетинг', this)">Маркетинг</button>
+            <button class="side-btn" data-category="Презентации" onclick="setCategory('Презентации', this)">Презентации</button>
+            <button class="side-btn" data-category="Перевод" onclick="setCategory('Перевод', this)">Перевод</button>
+            <button class="side-btn" data-category="Аудио" onclick="setCategory('Аудио', this)">Аудио</button>
+            <button class="side-btn" data-category="Поиск" onclick="setCategory('Поиск', this)">Поиск</button>
+        </div>
+    </aside>
+
+    <section class="content-area">
+        <div class="catalog-top">
+            <div>
+                <h1 class="catalog-title">Каталог ИИ</h1>
+                <p class="catalog-subtitle">30 инструментов, рабочий поиск, рабочие категории, кнопка профиля и избранное.</p>
+            </div>
+
+            <a class="btn" href="favorites.html">Открыть избранное</a>
+        </div>
+
+        <div class="search-row">
+            <input id="searchInput" type="text" placeholder="Поиск по названию или категории...">
+            <button class="btn" onclick="searchAI()">Поиск</button>
+        </div>
+
+        <div class="stats-line" id="statsLine">Показано: 30 инструментов</div>
+
+        <div id="toolsContainer" class="tools-grid"></div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 NeuroHub</p>
+</footer>
+
+<script>
+    const tools = [
+        { id: 1,  name: "ChatGPT", category: "Чат-боты", description: "Универсальный ИИ помощник для текста, кода и идей.", rating: 4.9, download: "https://chatgpt.com" },
+        { id: 2,  name: "Claude", category: "Чат-боты", description: "Сильный анализ документов и длинных текстов.", rating: 4.8, download: "https://claude.ai" },
+        { id: 3,  name: "Gemini", category: "Чат-боты", description: "ИИ от Google для задач, поиска и мультимодальности.", rating: 4.7, download: "https://gemini.google.com" },
+        { id: 4,  name: "Perplexity", category: "Поиск", description: "ИИ поисковик с быстрыми ответами и источниками.", rating: 4.8, download: "https://perplexity.ai" },
+        { id: 5,  name: "Midjourney", category: "Изображения", description: "Генерация арт-изображений с сильным стилем.", rating: 4.9, download: "https://www.midjourney.com" },
+        { id: 6,  name: "Leonardo AI", category: "Изображения", description: "Картинки, ассеты и стилизованные визуалы.", rating: 4.8, download: "https://leonardo.ai" },
+        { id: 7,  name: "Ideogram", category: "Изображения", description: "Генерация изображений с хорошим текстом внутри.", rating: 4.7, download: "https://ideogram.ai" },
+        { id: 8,  name: "Flux", category: "Изображения", description: "Современная генерация изображений от Black Forest Labs.", rating: 4.8, download: "https://blackforestlabs.ai" },
+        { id: 9,  name: "Runway", category: "Видео", description: "Генерация и редактирование видео через ИИ.", rating: 4.8, download: "https://runwayml.com" },
+        { id: 10, name: "Pika", category: "Видео", description: "Создание коротких видео из текста и сцен.", rating: 4.7, download: "https://pika.art" },
+        { id: 11, name: "Kling", category: "Видео", description: "Мощный видео-генератор с реалистичным движением.", rating: 4.8, download: "https://klingai.com" },
+        { id: 12, name: "Synthesia", category: "Видео", description: "Видео с аватарами и голосом для бизнеса.", rating: 4.8, download: "https://www.synthesia.io" },
+        { id: 13, name: "HeyGen", category: "Видео", description: "Создание видеоаватаров и презентационных роликов.", rating: 4.8, download: "https://www.heygen.com" },
+        { id: 14, name: "ElevenLabs", category: "Аудио", description: "Озвучка, голоса и аудиоконтент высокого качества.", rating: 4.9, download: "https://elevenlabs.io" },
+        { id: 15, name: "Suno", category: "Музыка", description: "Генерация песен, вокала и музыкальных идей.", rating: 4.9, download: "https://suno.com" },
+        { id: 16, name: "Udio", category: "Музыка", description: "Создание музыки по текстовому описанию.", rating: 4.8, download: "https://www.udio.com" },
+        { id: 17, name: "Cursor", category: "Программирование", description: "ИИ редактор кода для быстрой разработки.", rating: 4.9, download: "https://cursor.com" },
+        { id: 18, name: "GitHub Copilot", category: "Программирование", description: "Автодополнение и помощь программисту.", rating: 4.8, download: "https://github.com/features/copilot" },
+        { id: 19, name: "Windsurf", category: "Программирование", description: "ИИ среда разработки с агентным подходом.", rating: 4.8, download: "https://codeium.com/windsurf" },
+        { id: 20, name: "Replit AI", category: "Программирование", description: "Кодинг и запуск проектов прямо в браузере.", rating: 4.7, download: "https://replit.com" },
+        { id: 21, name: "Notion AI", category: "Продуктивность", description: "Заметки, документы и автоматизация текста.", rating: 4.7, download: "https://www.notion.so" },
+        { id: 22, name: "Grammarly", category: "Образование", description: "Проверка текста, стиля и грамматики.", rating: 4.8, download: "https://www.grammarly.com" },
+        { id: 23, name: "DeepL", category: "Перевод", description: "Один из лучших ИИ-переводчиков.", rating: 4.9, download: "https://www.deepl.com" },
+        { id: 24, name: "Canva AI", category: "Дизайн", description: "Дизайн, постеры и контент с ИИ.", rating: 4.8, download: "https://www.canva.com" },
+        { id: 25, name: "Gamma", category: "Презентации", description: "Создание презентаций и документов с ИИ.", rating: 4.8, download: "https://gamma.app" },
+        { id: 26, name: "Tome", category: "Презентации", description: "Презентации, питчи и визуальные сторителлинги.", rating: 4.7, download: "https://tome.app" },
+        { id: 27, name: "Zapier AI", category: "Автоматизация", description: "Автоматизация задач и связок между сервисами.", rating: 4.7, download: "https://zapier.com" },
+        { id: 28, name: "Make", category: "Автоматизация", description: "Наглядная автоматизация без кода.", rating: 4.8, download: "https://www.make.com" },
+        { id: 29, name: "n8n", category: "Автоматизация", description: "Open-source автоматизация процессов и AI-воркфлоу.", rating: 4.8, download: "https://n8n.io" },
+        { id: 30, name: "Bolt", category: "Программирование", description: "Создание сайтов и приложений через ИИ.", rating: 4.8, download: "https://bolt.new" }
+    ];
+
+    let currentCategory = "all";
+    let currentQuery = "";
+
+    function updateUserUI() {
+        const userArea = document.getElementById("userArea");
+        const logged = localStorage.getItem("isLoggedIn");
+
+        if (!userArea) return;
+
+        userArea.innerHTML = logged
+            ? `<a href="profile.html" class="btn">👤 Профиль</a>`
+            : `<a href="login.html" class="btn">Вход</a>`;
+    }
+
+    function getFavorites() {
+        return JSON.parse(localStorage.getItem("favorites")) || [];
+    }
+
+    function saveFavorites(data) {
+        localStorage.setItem("favorites", JSON.stringify(data));
+    }
+
+    function addFavorite(name) {
+        const favorites = getFavorites();
+        if (favorites.includes(name)) {
+            alert("Уже в избранном");
+            return;
+        }
+        favorites.push(name);
+        saveFavorites(favorites);
+        alert("Добавлено в избранное");
+    }
+
+    function setCategory(category, btn) {
+        currentCategory = category;
+
+        document.querySelectorAll(".side-btn").forEach(el => el.classList.remove("active"));
+        if (btn) btn.classList.add("active");
+
+        renderTools();
+    }
+
+    function searchAI() {
+        currentQuery = document.getElementById("searchInput").value.trim().toLowerCase();
+        renderTools();
+    }
+
+    function renderTools() {
+        const container = document.getElementById("toolsContainer");
+        const statsLine = document.getElementById("statsLine");
+        if (!container) return;
+
+        const filtered = tools.filter(tool => {
+            const matchesCategory = currentCategory === "all" || tool.category === currentCategory;
+            const matchesQuery =
+                !currentQuery ||
+                tool.name.toLowerCase().includes(currentQuery) ||
+                tool.category.toLowerCase().includes(currentQuery) ||
+                tool.description.toLowerCase().includes(currentQuery);
+
+            return matchesCategory && matchesQuery;
+        });
+
+        statsLine.textContent = `Показано: ${filtered.length} инструментов`;
+
+        container.innerHTML = filtered.map(tool => `
+            <article class="tool-card">
+                <div class="tool-meta">
+                    <span class="pill">📂 ${tool.category}</span>
+                    <span class="pill">⭐ ${tool.rating}</span>
+                </div>
+                <h3>${tool.name}</h3>
+                <p>${tool.description}</p>
+                <div class="tool-actions">
+                    <button class="btn" onclick="addFavorite('${tool.name}')">⭐ В избранное</button>
+                    <a class="btn" href="${tool.download}" target="_blank" rel="noopener noreferrer">Открыть</a>
+                </div>
+            </article>
+        `).join("");
+
+        if (filtered.length === 0) {
+            container.innerHTML = `<div class="tool-card"><h3>Ничего не найдено</h3><p>Попробуй другую категорию или запрос.</p></div>`;
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        updateUserUI();
+        renderTools();
+    });
+</script>
+
+</body>
+</html>

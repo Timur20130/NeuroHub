@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>NeuroHub | Инструмент</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+<body>
+
+<header>
+
+    <div class="logo">
+        🧠 NeuroHub
+    </div>
+
+    <nav>
+
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="favorites.html">Избранное</a>
+
+    </nav>
+
+</header>
+
+<section>
+
+    <div
+    class="tool-card"
+    style="
+    max-width:900px;
+    margin:auto;">
+
+        <h1 style="margin-bottom:20px;">
+
+            ChatGPT
+
+        </h1>
+
+        <p
+        style="
+        margin-bottom:20px;">
+
+            Один из самых популярных ИИ помощников для работы,
+            программирования, обучения и создания контента.
+
+        </p>
+
+        <p style="margin-bottom:10px;">
+            ⭐ Рейтинг: 4.9 / 5
+        </p>
+
+        <p style="margin-bottom:10px;">
+            📂 Категория: Чат-боты
+        </p>
+
+        <p style="margin-bottom:30px;">
+            💰 Цена: Бесплатно / Premium
+        </p>
+
+        <button
+        onclick="addFavorite('ChatGPT')">
+
+            Добавить в избранное
+
+        </button>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2>
+
+        Возможности
+
+    </h2>
+
+    <div class="tools-grid">
+
+        <div class="tool-card">
+
+            📝 Написание текстов
+
+        </div>
+
+        <div class="tool-card">
+
+            💻 Программирование
+
+        </div>
+
+        <div class="tool-card">
+
+            📚 Обучение
+
+        </div>
+
+        <div class="tool-card">
+
+            📊 Анализ данных
+
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <h2>
+    
+    Отзывы
+    
+    </h2>
+    
+    <div
+    style="
+    max-width:800px;
+    margin:auto;">
+    
+    <input
+    type="text"
+    id="reviewAuthor"
+    placeholder="Ваш ник"
+    style="
+    width:100%;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:12px;">
+    
+    <select
+    id="reviewStars"
+    style="
+    width:100%;
+    padding:15px;
+    margin-bottom:15px;
+    border-radius:12px;">
+    
+    <option value="5">
+    ★★★★★
+    </option>
+    
+    <option value="4">
+    ★★★★☆
+    </option>
+    
+    <option value="3">
+    ★★★☆☆
+    </option>
+    
+    <option value="2">
+    ★★☆☆☆
+    </option>
+    
+    <option value="1">
+    ★☆☆☆☆
+    </option>
+    
+    </select>
+    
+    <textarea
+    id="reviewInput"
+    placeholder="Напишите отзыв..."
+    style="
+    width:100%;
+    min-height:120px;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;">
+    
+    </textarea>
+    
+    <button
+    onclick="addAdvancedReview()">
+    
+    Отправить отзыв
+    
+    </button>
+    
+    <div
+    id="reviewsContainer"
+    style="
+    margin-top:30px;">
+    
+    </div>
+    
+    </div>
+    
+    </section>
+    
+    <h2>
+
+        Похожие инструменты
+
+    </h2>
+
+    <div class="tools-grid">
+
+        <div class="tool-card">
+
+            <h3>Claude</h3>
+
+            <p>
+                Анализ документов и длинных текстов
+            </p>
+
+        </div>
+
+        <div class="tool-card">
+
+            <h3>Gemini</h3>
+
+            <p>
+                ИИ от Google
+            </p>
+
+        </div>
+
+        <div class="tool-card">
+
+            <h3>Perplexity</h3>
+
+            <p>
+                ИИ поиск нового поколения
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section>
+
+    <div class="ad-box">
+
+        Реклама Google AdSense
+
+    </div>
+
+</section>
+
+<footer>
+
+    <p>
+
+        © 2026 NeuroHub
+
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

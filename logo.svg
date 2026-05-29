@@ -1,0 +1,38 @@
+<svg width="320" height="80" viewBox="0 0 320 80" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="40" cy="40" r="28" fill="url(#brainGradient)"/>
+
+  <circle cx="32" cy="32" r="4" fill="white"/>
+  <circle cx="48" cy="32" r="4" fill="white"/>
+  <circle cx="32" cy="48" r="4" fill="white"/>
+  <circle cx="48" cy="48" r="4" fill="white"/>
+  <circle cx="40" cy="40" r="4" fill="white"/>
+
+  <line x1="32" y1="32" x2="40" y2="40"
+        stroke="white"
+        stroke-width="2"/>
+
+  <line x1="48" y1="32" x2="40" y2="40"
+        stroke="white"
+        stroke-width="2"/>
+
+  <line x1="32" y1="48" x2="40" y2="40"
+        stroke="white"
+        stroke-width="2"/>
+
+  <line x1="48" y1="48" x2="40" y2="40"
+        stroke="white"
+        stroke-width="2"/>
+
+  <text x="85"
+        y="50"
+        font-family="Arial, sans-serif"
+        font-size="34"
+        font-weight="700"
